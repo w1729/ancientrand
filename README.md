@@ -1,10 +1,15 @@
-<div align="center">
-  <h1>AncientZKRand</h1>
+<div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+  <img src="images/light.png" alt="Lightning Bolt" width="60" height="60" />
+  <h1 style="margin: 0; padding-left: 10px;">AncientZKRand</h1>
 </div>
 
+
+<div align="center">
 A verifiable random number generation system for Ancient8 chain using zero-knowledge proofs (zk).
+</div>
 
 ## Overview
+
 
 AncientZKRand is a specialized deterministic public-key cryptographic system that leverages zk-SNARK technology through Noir to provide verifiable random numbers. The system is designed to serve decentralized applications on the Ancient8 chain, particularly for use cases such as:
 
@@ -38,6 +43,69 @@ AncientZKRand addresses the common trade-offs found in current randomness techno
 - Bias resistance
 - System uptime
 
+## Working
+<img src="images/1.png" height="500"/>
+<br> <br>
+
+The process begins with a **client (consumer contract)** requesting a random number. The request is processed by the **ZKRANDOM coordinator**, indexed in the **subgraph**, and monitored by the **ZKRANDOM Explorer** frontend. Operators generate and submit proofs back to the coordinator, which verifies the proof and delivers the random number to the client.  
+
+---
+
+#### Process Flow  
+
+1. The **client** submits a **random number request** to the **ZKRANDOM coordinator**.  
+2. The request is **indexed** in the **subgraph**, making it visible to the **ZKRANDOM Explorer** (frontend).  
+3. An **operator** observes the request from the explorer, generates a proof, and submits it back to the **coordinator**.  
+4. The **coordinator** verifies the proof using the **ZKRANDOM UltraPlonk verifier**.  
+5. Once the proof is verified, the **random number** is sent back to the **client**.  
+
+---
+
+#### Key Components  
+
+1. **ZKRANDOM Coordinator**  
+   - Manages random number requests.  
+   - Verifies proofs submitted by operators.  
+   - Sends the random number to the client after verification.  
+
+2. **ZKRANDOM UltraPlonk Verifier**  
+   - Ensures the cryptographic integrity of proofs submitted by operators.  
+
+3. **Subgraph**  
+   - Indexes random number requests for event monitoring.  
+   - Provides request data to the ZKRANDOM Explorer.  
+
+4. **ZKRANDOM Explorer**  
+   - A frontend interface to track random number requests.  
+   - Allows operators to observe pending requests.  
+
+5. **Operator**  
+   - A key participant responsible for generating ZKRANDOM proofs based on requests.  
+
+---
+
+#### Key Interactions  
+
+#### Between Components  
+
+- **Client ↔ Coordinator**:  
+  - The client sends a **random number request** to the coordinator.  
+  - The coordinator responds with the **random number** after proof verification.  
+
+- **Coordinator ↔ Subgraph**:  
+  - The coordinator emits a **request event** to the subgraph for indexing.  
+
+- **Subgraph ↔ ZKRANDOM Explorer**:  
+  - The ZKRANDOM Explorer queries the subgraph to display **pending requests**.  
+
+- **Operator ↔ Coordinator**:  
+  - The operator submits a **ZKRANDOM proof** to the coordinator for verification.  
+
+- **Coordinator ↔ Verifier**:  
+  - The coordinator interacts with the verifier to **verify proofs** submitted by operators.  
+
+---
+
 ## Technology Stack
 
 - **Core Technology**: zk-SNARK
@@ -66,5 +134,4 @@ AncientZKRand is particularly suitable for blockchain applications requiring fai
 - EC precompile support
 - Web browser for interaction
 
----
 
