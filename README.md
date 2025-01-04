@@ -1,4 +1,4 @@
-<div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+<div align="center">
   <img src="images/light.png" alt="Lightning Bolt" width="60" height="60" />
   <h1 style="margin: 0; padding-left: 10px;">AncientZKRand</h1>
 </div>
