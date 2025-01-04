@@ -134,4 +134,9 @@ AncientZKRand is particularly suitable for blockchain applications requiring fai
 - EC precompile support
 - Web browser for interaction
 
+## Live contracts addresses
+<img src="images/4.jpg" height=40 width=40 /> <br>
+Verifier [0x2ae470412F8b53E263C8F967E9679e4830a2643A](https://ancient8.testnet.routescan.io/address/0x2ae470412F8b53E263C8F967E9679e4830a2643A) <br>
+ZKrand [0xF12977Ff3F3260C36774ae47bd85Ca08D4878533](https://ancient8.testnet.routescan.io/address/0xF12977Ff3F3260C36774ae47bd85Ca08D4878533) <br>
 
+<br>
